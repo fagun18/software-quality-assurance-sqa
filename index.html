@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Software Quality Assurance - Questions and Answers">
+    <meta name="keywords" content="software quality assurance, SQA, software testing, QA engineer, qa, qa engineers, mejbaur bahar fagun, software qa engineer">
+    <meta name="author" content="Mejbaur Bahar Fagun">
+    <title>Software Quality Assurance(SQA) -by Mejbaur Bahar Fagun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .qa-section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        .arrow {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .expanded {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+        .answer {
+            display: none;
+        }
+
+        /* Responsive layout */
+        @media screen and (max-width: 768px) {
+            .qa-section {
+                padding: 5px;
+            }
+            .question {
+                padding-left: 25px;
+            }
+        }
+
+        /* Search bar styles */
+        #search-form {
+            text-align: center;
+            margin: 20px;
+        }
+        #search-input {
+            padding: 5px;
+            width: 200px;
+        }
+        #search-form button {
+            padding: 5px 15px;
+            margin-left: 10px;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 200px; /* Adjust the height as needed */
+        }
+
+        /* Footer styles */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 200px; /* Adjust the height as needed */
+        }
+    </style>
+    <script>
+        // Disable right-click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Disable inspect element
+        document.addEventListener("keydown", function (e) {
+            if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "c" || e.key === "C")) {
+                e.preventDefault();
+            }
+        });
+
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            const arrow = document.querySelector(`#${id} + .question .arrow`);
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            arrow.classList.toggle('expanded', answer.style.display === 'block');
+        }
+
+        function filterQuestions() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question) => {
+                const text = question.textContent.toLowerCase();
+                const answer = question.nextElementSibling;
+                if (text.includes(input)) {
+                    question.style.display = 'block';
+                    answer.style.display = answer.classList.contains('expanded') ? 'block' : 'none';
+                } else {
+                    question.style.display = 'none';
+                    answer.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Software QA Engineer (SQA) - Interview Questions & Answers</h1>
+    </header>
+
+    <div style="margin-top: 80px;"> <!-- Add margin to push content below the fixed header -->
+
+        <!-- Search Bar -->
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search..." oninput="filterQuestions()">
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa1')">1. What is software testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa1">
+                Software testing is the process of evaluating and verifying a software application to ensure that it meets specified requirements and works as expected. It involves executing the application with the intention of finding defects and identifying areas for improvement.
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa2')">2. What are the different levels of software testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa2">
+                The different levels of software testing include:
+                <ul>
+                    <li>Unit Testing: Testing individual units or components of the software.</li>
+                    <li>Integration Testing: Testing interactions between integrated units.</li>
+                    <li>System Testing: Testing the entire system as a whole.</li>
+                    <li>Acceptance Testing: Ensuring the software meets user requirements.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa3')">3. What is regression testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa3">
+                Regression testing is the process of testing the software application after changes have been made to it to ensure that the modifications haven't negatively impacted existing functionality. It helps identify new defects that might have been introduced during the changes.
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa4')">4. How do you prioritize test cases?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa4">
+                Test case prioritization is based on factors such as:
+                <ul>
+                    <li>Business impact: Testing critical functionalities first.</li>
+                    <li>Risk assessment: Focusing on high-risk areas.</li>
+                    <li>Frequency of use: Testing frequently used features.</li>
+                    <li>Dependency: Testing functionalities that are dependent on others first.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa5')">5. What is the difference between manual testing and automated testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa5">
+                Manual testing involves human intervention to test the software without the use of automated tools. Testers execute test cases, observe results, and report defects. In contrast, automated testing involves using scripts and tools to execute test cases, reducing human effort and increasing test coverage and repeatability.
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa6')">6. Explain the concept of test-driven development (TDD).
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa6">
+                Test-driven development (TDD) is a development approach where developers write tests for a specific piece of functionality before implementing the code. The process starts with writing a test case that initially fails. Developers then write the minimum code necessary to pass the test, refactor as needed, and repeat the cycle for each new piece of functionality.
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa7')">7. What is exploratory testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa7">
+                Exploratory testing is an informal testing approach where testers explore the software without predefined test cases. Testers use their domain knowledge and creativity to uncover defects by interacting with the application as an end user would. The goal is to find issues that might not be easily identified through scripted testing.
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa8')">8. What are some common software testing tools used in the industry?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa8">
+                Some common software testing tools include:
+                <ul>
+                    <li>Selenium: Used for automated web application testing.</li>
+                    <li>JUnit: A popular testing framework for Java applications.</li>
+                    <li>Postman: For API testing and exploring.</li>
+                    <li>JIRA: A widely used issue and project tracking tool.</li>
+                    <li>LoadRunner: For performance and load testing.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="qa-section">
+            <div class="question" onclick="toggleAnswer('qa9')">9. How do you handle software defects during testing?
+                <div class="arrow"></div>
+            </div>
+            <div class="answer" id="qa9">
+                When a defect is identified during testing, the typical process involves:
+                <ul>
+                    <li>Reporting the defect with detailed information (steps to reproduce, environment, etc.).</li>
+                    <li>Assigning a severity and priority level to the defect.</li>
+                    <li>Communicating the defect to developers and stakeholders.</li>
+                    <li>Retesting the defect after it's fixed.</li>
+                    <li>Verifying the fix and closing the defect if it's resolved.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="qa-section">
+    <div class="question" onclick="toggleAnswer('qa10')">10. What is the V-model in software testing?
+        <div class="arrow"></div>
+    </div>
+    <div class="answer" id="qa10">
+        The V-model in software testing is a development and testing methodology that emphasizes a structured approach. It aligns testing activities with the corresponding development stages, forming a V-shape. Each development stage has a corresponding testing phase:
+        <ul>
+            <li>Requirements Analysis: Corresponding to Requirement Testing.</li>
+            <li>Design: Corresponding to Design Testing.</li>
+            <li>Coding: Corresponding to Unit Testing.</li>
+            <li>Integration: Corresponding to Integration Testing.</li>
+            <li>System Testing: Corresponding to System Testing.</li>
+            <li>Acceptance Testing: Corresponding to Acceptance Testing.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="qa-section">
+    <div class="question" onclick="toggleAnswer('qa11')">11. What is boundary testing?
+        <div class="arrow"></div>
+    </div>
+    <div class="answer" id="qa11">
+        Boundary testing is a software testing technique where test cases are designed to evaluate the application's behavior at the boundary limits of input values. The goal is to identify defects related to boundary values, such as minimum and maximum values. For example, if a function accepts values from 1 to 100, boundary testing would include tests with inputs 1, 100, and values just outside this range (e.g., 0, 101).
+    </div>
+</div>
+
+<div class="qa-section">
+    <div class="question" onclick="toggleAnswer('qa12')">12. What is usability testing?
+        <div class="arrow"></div>
+    </div>
+    <div class="answer" id="qa12">
+        Usability testing is a type of testing that evaluates how user-friendly and easy to use a software application is. Testers simulate real-user scenarios to observe how users interact with the application. The objective is to identify areas of improvement, enhance user experience, and ensure the application meets user expectations.
+    </div>
+</div>
+
+<div class="qa-section">
+    <div class="question" onclick="toggleAnswer('qa13')">13. What is the purpose of load testing?
+        <div class="arrow"></div>
+    </div>
+    <div class="answer" id="qa13">
+        Load testing is performed to assess how well a software application can handle anticipated user loads. It involves subjecting the application to varying user loads to evaluate its performance and response times under stress. The goal is to identify performance bottlenecks and ensure the application can handle the expected user traffic without crashing or slowing down significantly.
+    </div>
+</div>
+
+<div class="qa-section">
+    <div class="question" onclick="toggleAnswer('qa14')">14. What is the difference between smoke testing and sanity testing?
+        <div class="arrow"></div>
+    </div>
+    <div class="answer" id="qa14">
+        Smoke Testing and Sanity Testing are both types of software testing executed during different phases of the development lifecycle:
+        <ul>
+            <li>Smoke Testing: A preliminary test executed on the initial build of the software to ensure that it can handle basic functions. It verifies if the critical functionalities are working before proceeding with further testing.</li>
+            <li>Sanity Testing: Performed after a software build is released with minor changes or bug fixes. It ensures that the specific bugs reported earlier have been fixed without introducing new defects.</li>
+        </ul>
+    </div>
+</div>
+
+        <!-- ... Add more questions and answers as needed ... -->
+    </div>
+
+    <footer>
+        <p>© Mejbaur Bahar Fagun</p>
+        <p>🔀 Connect With Me:</p>
+        <p>📘 Facebook: <a href="https://www.facebook.com/mbfagun">Mejbaur Bahar Fagun</a></p>
+        <p>🐦 Twitter: <a href="https://twitter.com/fagun_mejbaur">Mejbaur Bahar Fagun</a></p>
+        <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/mejbaur/">Mejbaur Bahar Fagun</a></p>
+        <p>📖 Hashnode: <a href="https://fagun.hashnode.dev">Mejbaur Bahar Fagun</a></p>
+        <p>📝 Medium: <a href="https://fagun18.medium.com/">Mejbaur Bahar Fagun</a></p>
+        <p>📦 GitHub: <a href="https://github.com/fagunti">Mejbaur Bahar Fagun</a></p>
+        <p>🎥 YouTube: <a href="https://www.youtube.com/channel/UC4Pgj5J2ZUxAVH9iAPfqL5g">Mejbaur Bahar Fagun</a></p>
+    </footer>
+</body>
+</html>
